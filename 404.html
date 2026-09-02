@@ -193,38 +193,10 @@ body::before{
 .primary{
   background:
     linear-gradient(180deg,rgba(255,255,255,.48),rgba(255,255,255,.20)) !important;
-  color:#111827 !important;
-  border:1px solid rgba(80,92,112,.16) !important;
-  font-weight:700;
-  text-shadow:0 1px 0 rgba(255,255,255,.72);
-}
-.primary span{
-  color:inherit;
 }
 .primary:hover{
   background:
     linear-gradient(180deg,rgba(255,255,255,.62),rgba(255,255,255,.26)) !important;
-  color:#07111f !important;
-}
-.actions button,
-.nav button{
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.48),rgba(255,255,255,.20)) !important;
-  color:#111827 !important;
-  border:1px solid rgba(80,92,112,.16) !important;
-  font-weight:700;
-  text-shadow:0 1px 0 rgba(255,255,255,.72);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.76),
-    inset 0 -1px 0 rgba(255,255,255,.16),
-    0 7px 20px rgba(28,39,56,.07);
-}
-.actions button:hover,
-.nav button:hover{
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.62),rgba(255,255,255,.26)) !important;
-  color:#07111f !important;
-  border-color:rgba(80,92,112,.22) !important;
 }
 .mode.sel{
   border-color:rgba(255,255,255,.92) !important;
@@ -249,308 +221,192 @@ h1,h2,h3{
   .qcard,.panel{border-radius:28px !important}
 }
 
-/* ===== Bilingual segmented language control ===== */
-.top{
+
+/* ===== Segmented Language + Appearance Controls ===== */
+.control-stack{
   display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:24px;
+  gap:14px;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  justify-content:flex-end;
 }
-.language-switcher{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:7px;
-  flex:0 0 auto;
-}
-.language-label{
-  margin-left:4px;
-  color:#69768a;
+.control-group{display:flex;flex-direction:column;gap:6px}
+.control-label{
   font-size:12px;
-  font-weight:700;
-  letter-spacing:.02em;
-  line-height:1;
-  text-shadow:0 1px 0 rgba(255,255,255,.66);
+  font-weight:650;
+  letter-spacing:.01em;
+  color:var(--text-muted);
+  padding-left:8px;
 }
-.language-segmented{
-  position:relative;
+.segmented{
   display:grid;
   grid-template-columns:1fr 1fr;
-  width:250px;
-  min-height:56px;
-  padding:5px;
-  border:1px solid rgba(80,92,112,.16);
+  min-width:246px;
+  padding:6px;
   border-radius:999px;
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.48),rgba(255,255,255,.20));
+  background:rgba(12,29,50,.92);
+  border:1px solid rgba(148,170,197,.22);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.76),
-    inset 0 -1px 0 rgba(255,255,255,.16),
-    0 7px 20px rgba(28,39,56,.07);
-  -webkit-backdrop-filter:blur(24px) saturate(150%);
-  backdrop-filter:blur(24px) saturate(150%);
-  isolation:isolate;
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 10px 28px rgba(0,0,0,.16);
+  -webkit-backdrop-filter:blur(24px) saturate(155%);
+  backdrop-filter:blur(24px) saturate(155%);
 }
-.language-segmented::before{
-  content:"";
-  position:absolute;
-  inset:1px 8% auto;
-  height:45%;
-  border-radius:999px;
-  background:linear-gradient(180deg,rgba(255,255,255,.32),transparent);
-  pointer-events:none;
-  z-index:-1;
-}
-.language-option{
-  position:relative;
-  min-width:0;
-  min-height:46px;
-  padding:0 20px;
+.theme-segmented{min-width:210px}
+.seg-btn{
   border:0;
-  border-radius:999px;
   background:transparent;
-  color:#68758a;
-  cursor:pointer;
-  font-size:16px;
-  font-weight:750;
-  letter-spacing:-.01em;
-  transition:
-    color .22s ease,
-    background .28s cubic-bezier(.2,.8,.2,1),
-    box-shadow .28s ease,
-    transform .14s ease;
-  -webkit-tap-highlight-color:transparent;
-}
-.language-option:hover:not(.is-active){
-  color:#111827;
-  background:rgba(255,255,255,.30);
-}
-.language-option:active{
-  transform:scale(.965);
-}
-.language-option.is-active{
-  color:#111827;
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.90),rgba(255,255,255,.54));
-  border:1px solid rgba(80,92,112,.16);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.88),
-    inset 0 -1px 0 rgba(255,255,255,.20),
-    0 5px 16px rgba(28,39,56,.10),
-    0 1px 2px rgba(28,39,56,.12);
-}
-.language-option.is-active::after{
-  content:"";
-  position:absolute;
-  left:15%;
-  right:15%;
-  top:2px;
-  height:42%;
+  color:#aab8ca;
+  min-height:52px;
+  padding:0 22px;
   border-radius:999px;
-  background:linear-gradient(180deg,rgba(255,255,255,.40),transparent);
-  pointer-events:none;
+  font-weight:760;
+  font-size:16px;
+  letter-spacing:-.01em;
+  cursor:pointer;
+  transition:background .22s ease,color .22s ease,transform .18s ease,box-shadow .22s ease;
 }
-.language-option:focus-visible{
-  outline:3px solid rgba(82,102,132,.24);
-  outline-offset:3px;
-}
-@media (max-width:560px){
-  .top{align-items:center;gap:14px}
-  .brand{font-size:19px}
-  .language-label{font-size:11px}
-  .language-segmented{width:190px;min-height:50px;padding:4px}
-  .language-option{min-height:40px;padding:0 11px;font-size:14px}
-}
-@media (max-width:400px){
-  .top{align-items:flex-start;flex-direction:column}
-  .language-switcher{align-self:flex-end}
-}
-@media (prefers-reduced-motion:reduce){
-  .language-option{transition:none}
+.seg-btn:hover{color:#d9e2ee}
+.seg-btn:active{transform:scale(.98)}
+.seg-btn.active{
+  background:linear-gradient(180deg,#ffc65f 0%,#ffb43e 100%);
+  color:#10233d;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.55),
+    0 5px 14px rgba(0,0,0,.18);
 }
 
-/* ===== Stable bilingual layout: text changes, geometry does not ===== */
-html{scrollbar-gutter:stable}
-.top{
-  height:75px;
+/* ===== Theme variables ===== */
+html[data-theme="light"]{
+  --bg:#f4f4f2;
+  --text:#111318;
+  --muted:#666a73;
+  --line:rgba(17,17,17,.08);
+  --text-main:#111318;
+  --text-muted:#666a73;
+  color-scheme:light;
 }
-.brand{
-  height:29px;
-  line-height:29px;
-  overflow:hidden;
+html[data-theme="dark"]{
+  --bg:#0b1018;
+  --text:#f6f7fb;
+  --muted:#a6adba;
+  --line:rgba(255,255,255,.10);
+  --text-main:#f5f7fb;
+  --text-muted:#aeb6c4;
+  --glass-bg:rgba(20,28,40,.44);
+  --glass-bg-strong:rgba(26,35,49,.58);
+  --glass-line:rgba(255,255,255,.12);
+  --glass-shadow:0 22px 70px rgba(0,0,0,.36);
+  --glass-shadow-soft:0 14px 38px rgba(0,0,0,.28);
+  --glass-highlight:inset 0 1px 0 rgba(255,255,255,.12);
+  --glass-lowlight:inset 0 -1px 0 rgba(0,0,0,.20);
+  color-scheme:dark;
 }
-#homeKicker{
-  height:19px;
-  line-height:19px;
-  overflow:hidden;
+html[data-theme="dark"] body{
+  background:
+    radial-gradient(circle at 18% 8%,rgba(43,66,96,.34),transparent 30%),
+    radial-gradient(circle at 78% 18%,rgba(31,57,88,.30),transparent 34%),
+    radial-gradient(circle at 50% 82%,rgba(18,35,56,.34),transparent 38%),
+    linear-gradient(180deg,#0b1018 0%,#111927 100%);
+  color:var(--text-main);
 }
-.hero h1{
-  height:181px;
-  overflow:hidden;
+html[data-theme="dark"] body::before{
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.025),transparent 28%),
+    linear-gradient(300deg,rgba(93,128,173,.06),transparent 35%);
 }
-html[lang="en"] .hero h1{
-  font-size:clamp(48px,6.4vw,78px);
-  line-height:1.05;
+html[data-theme="dark"] .topbar,
+html[data-theme="dark"] .top{
+  background:linear-gradient(180deg,rgba(23,32,46,.62),rgba(15,22,34,.42));
+  border-color:rgba(255,255,255,.10);
 }
-#homeDesc{
-  height:68px;
-  overflow:hidden;
+html[data-theme="dark"] .mode,
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .panel{
+  background:linear-gradient(180deg,rgba(30,40,55,.58),rgba(15,22,33,.40));
+  border-color:rgba(255,255,255,.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.22),
+    0 16px 42px rgba(0,0,0,.28);
 }
-#home .actions{
-  display:grid;
-  grid-template-columns:180px 210px;
-  align-items:stretch;
+html[data-theme="dark"] .hero p,
+html[data-theme="dark"] .mode p,
+html[data-theme="dark"] .small,
+html[data-theme="dark"] .meta,
+html[data-theme="dark"] .en,
+html[data-theme="dark"] .labels,
+html[data-theme="dark"] .progrow,
+html[data-theme="dark"] #reportSubtitle{
+  color:#aeb6c4 !important;
 }
-#home .actions button,
-#report > .actions button,
-.nav button{
-  width:100%;
-  height:49px;
-  padding-top:0;
-  padding-bottom:0;
-  white-space:nowrap;
+html[data-theme="dark"] .brand span{color:#9aa5b4}
+html[data-theme="dark"] .chip{
+  background:linear-gradient(180deg,rgba(45,58,77,.62),rgba(26,36,50,.48)) !important;
+  color:#eef2f8;
+  border-color:rgba(255,255,255,.10);
 }
-.mode{
-  height:206px;
+html[data-theme="dark"] .bar,
+html[data-theme="dark"] .prog{
+  background:rgba(255,255,255,.08) !important;
+  border-color:rgba(255,255,255,.08);
 }
-.mode p{
-  height:42px;
-  overflow:hidden;
+html[data-theme="dark"] .bar i,
+html[data-theme="dark"] .prog i{
+  background:linear-gradient(90deg,#dce7f7,#9eb5d2) !important;
 }
-.progrow{
-  height:19px;
-  line-height:19px;
+html[data-theme="dark"] .primary,
+html[data-theme="dark"] .pill,
+html[data-theme="dark"] .scale button{
+  color:#f3f6fa;
+  background:linear-gradient(180deg,rgba(51,65,84,.72),rgba(28,38,52,.58)) !important;
+  border-color:rgba(255,255,255,.12);
 }
-.meta{
-  height:14px;
-  line-height:14px;
+html[data-theme="dark"] .scale button.on{
+  color:#10233d;
+  background:linear-gradient(180deg,#ffc65f,#ffb43e) !important;
 }
-#zh,
-#en{
-  height:64px;
-  margin-top:0;
-  overflow:auto;
-  position:relative;
-  z-index:2;
-  color:#111827 !important;
-  -webkit-text-fill-color:#111827 !important;
-  background:none !important;
-  background-clip:border-box !important;
-  -webkit-background-clip:border-box !important;
-  opacity:1 !important;
-  filter:none !important;
-  mix-blend-mode:normal !important;
-  text-shadow:none !important;
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3{
+  text-shadow:none;
 }
-.card > *{
-  position:relative;
-  z-index:1;
+html[data-theme="dark"] .mode.sel{
+  border-color:rgba(255,198,95,.75) !important;
+  box-shadow:
+    0 0 0 2px rgba(255,198,95,.16),
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 16px 38px rgba(0,0,0,.30);
 }
-.card::before,
-.card::after{
-  z-index:0;
-}
-.labels{
-  height:19px;
-  line-height:19px;
-}
-.nav{
-  grid-template-columns:110px 1fr 110px;
-}
-.nav button{
-  width:110px;
-}
-.reporthead .kicker{
-  height:19px;
-  line-height:19px;
-  overflow:hidden;
-}
-#reportTitle{
-  height:95px;
-  overflow:hidden;
-}
-#reportSubtitle{
-  height:23px;
-  overflow:hidden;
-}
-.reportgrid{
-  grid-template-rows:430px 355px;
-}
-.reportgrid > .panel{
-  height:100%;
-}
-.trait{
-  grid-template-columns:230px 1fr 40px;
-  height:25px;
-  margin:12px 0;
-}
-#report > .actions{
-  display:grid;
-  grid-template-columns:110px 170px;
-  align-items:stretch;
-}
-#reportNote{
-  min-height:20px;
-}
+
 @media(max-width:800px){
-  .reportgrid{
-    grid-template-rows:500px 420px 430px 370px;
-  }
-  .trait{
-    grid-template-columns:150px 1fr 34px;
-    height:42px;
-    margin:8px 0;
-  }
+  .top{align-items:flex-start;gap:18px;flex-direction:column}
+  .control-stack{width:100%;justify-content:flex-start}
 }
 @media(max-width:560px){
-  .hero h1{
-    height:147px;
-  }
-  html[lang="en"] .hero h1{
-    font-size:44px;
-    line-height:1.05;
-  }
-  #homeDesc{
-    height:135px;
-  }
-  html[lang="en"] #homeDesc{
-    font-size:18px;
-    line-height:1.55;
-  }
-  #home .actions{
-    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  }
-  #home .actions button{
-    min-width:0;
-    padding-left:10px;
-    padding-right:10px;
-    font-size:14px;
-  }
-  #zh,
-  #en{
-    height:120px;
-  }
-  #reportTitle{
-    height:104px;
-  }
-  #reportSubtitle{
-    height:57px;
-  }
-  #reportNote{
-    height:39px;
-    overflow:hidden;
-  }
-  #report > .actions{
-    grid-template-columns:110px 170px;
-  }
-}
-@media(max-width:400px){
-  .top{
-    height:112px;
-  }
+  .control-stack{display:grid;grid-template-columns:1fr;gap:10px;width:100%}
+  .control-group{width:100%}
+  .segmented,.theme-segmented{min-width:0;width:100%}
+  .seg-btn{min-height:48px}
 }
 
-</style></head><body><div class="shell"><div class="top"><div class="brand">qPersonality <span>Preview</span></div><div class="language-switcher"><div class="language-label" id="languageLabel">語言 / Language</div><div class="language-segmented" role="radiogroup" aria-labelledby="languageLabel"><button class="language-option is-active" type="button" id="langZh" role="radio" aria-checked="true"><span>繁中</span></button><button class="language-option" type="button" id="langEn" role="radio" aria-checked="false"><span>English</span></button></div></div></div>
+</style></head><body><div class="shell"><div class="top"><div class="brand">qPersonality <span>Preview</span></div>
+<div class="control-stack">
+  <div class="control-group">
+    <div class="control-label" id="languageLabel">語言 / Language</div>
+    <div class="segmented" id="languageControl" role="group" aria-label="Language">
+      <button type="button" class="seg-btn active" id="langZh" data-lang="zh">繁中</button>
+      <button type="button" class="seg-btn" id="langEn" data-lang="en">English</button>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="control-label" id="themeLabel">外觀 / Appearance</div>
+    <div class="segmented theme-segmented" id="themeControl" role="group" aria-label="Appearance">
+      <button type="button" class="seg-btn" id="themeLight" data-theme="light">Light</button>
+      <button type="button" class="seg-btn" id="themeDark" data-theme="dark">Dark</button>
+    </div>
+  </div>
+</div></div>
 <section id="home" class="screen active"><div class="hero"><div class="kicker" id="homeKicker">人格特質分析系統</div><h1 id="homeTitle">探索構成你的深層人格模式。</h1><p id="homeDesc">不是把你塞進一個人格盒子，而是建立一張真正屬於你的多維人格地圖。</p><div class="actions"><button class="primary" type="button" id="startBtn"><span>開始預覽測驗</span></button><button class="pill" type="button" id="reportBtn"><span>直接看結果報告</span></button></div></div><div class="modes"><button class="mode sel" type="button" data-test-size="24"><strong>24</strong><h3>Snapshot</h3><p id="mode24Desc">3–4 分鐘<br>快速人格掃描</p></button><button class="mode" type="button" data-test-size="60"><strong>60</strong><h3>Core</h3><p id="mode60Desc">8–10 分鐘<br>六大人格＋核心面向</p></button><button class="mode" type="button" data-test-size="120"><strong>120</strong><h3>Deep</h3><p id="mode120Desc">15–20 分鐘<br>深度人格與矛盾分析</p></button><button class="mode" type="button" data-test-size="180"><strong>180</strong><h3>Complete</h3><p id="mode180Desc">25–30 分鐘<br>完整人格地圖</p></button></div></section>
 <section id="assessment" class="screen"><div class="assess"><div class="progrow"><span id="num"></span><span id="pct"></span></div><div class="prog"><i id="bar"></i></div><div class="card"><div class="meta"><span id="qid"></span> · <span id="facet"></span></div><div id="zh" class="q"></div><div id="en" class="en"></div><div class="labels"><span id="scaleLeft">非常不像我</span><span id="scaleRight">非常像我</span></div><div id="scale" class="scale"></div><div class="nav"><button class="pill" type="button" id="prevBtn"><span>上一題</span></button><span class="small">1 — 7</span><button class="primary" type="button" id="nextBtn"><span>下一題</span></button></div></div></div></section>
 <section id="report" class="screen"><div class="reporthead"><div class="kicker" id="reportKicker">你的人格特質簽名</div><h2 id="reportTitle">直覺建構者</h2><div id="reportSubtitle" style="color:#666">高開放性 × 高自律 × 中度外向 × 高情緒敏感</div></div><div class="reportgrid"><div class="panel"><h3 id="coreTraitsTitle">6 大核心人格特質</h3><div class="trait"><span id="traitO">開放與探索</span><div class="bar"><i style="width:93%"></i></div><b>93</b></div><div class="trait"><span id="traitC">自律與執行</span><div class="bar"><i style="width:87%"></i></div><b>87</b></div><div class="trait"><span id="traitX">外向與社交</span><div class="bar"><i style="width:64%"></i></div><b>64</b></div><div class="trait"><span id="traitA">親和與協調</span><div class="bar"><i style="width:74%"></i></div><b>74</b></div><div class="trait"><span id="traitE">情緒敏感度</span><div class="bar"><i style="width:81%"></i></div><b>81</b></div><div class="trait"><span id="traitH">誠信與自我定位</span><div class="bar"><i style="width:78%"></i></div><b>78</b></div></div><div class="panel"><h3 id="strongestTitle">最突出的細項人格</h3><div class="chips"><span class="chip" id="chip1">想像力 96</span><span class="chip" id="chip2">審美敏感 95</span><span class="chip" id="chip3">成就驅力 91</span><span class="chip" id="chip4">深思熟慮 89</span><span class="chip" id="chip5">情緒強度 88</span></div><h3 id="confidenceTitle" style="margin-top:30px">人格分析可信度</h3><div style="font-size:48px;font-weight:800">94%</div><div class="small" id="confidenceDesc">回應模式穩定，主要人格構面具有高一致性。</div></div><div class="panel"><h3 id="paradoxTitle">人格矛盾組合</h3><div class="paradox"><b id="p1Title">高同理 × 較低信任</b><div class="small" id="p1Desc">容易理解別人的感受，但真正讓人進入內在世界需要時間。</div></div><div class="paradox"><b id="p2Title">高社交自信 × 中低社交需求</b><div class="small" id="p2Desc">可以在人群中自在，但不代表需要大量社交來獲得能量。</div></div><div class="paradox"><b id="p3Title">高創造 × 高精確</b><div class="small" id="p3Desc">不只會產生點子，也傾向把點子整理到可以真正落地。</div></div></div><div class="panel"><h3 id="threeSelvesTitle">三種自我狀態</h3><p><b id="publicTitle">外在自我</b><br><span class="small" id="publicDesc">沉著、清楚、有標準、具有想法。</span></p><p><b id="privateTitle">私下自我</b><br><span class="small" id="privateDesc">感受細膩、思緒密集、需要自己的空間。</span></p><p><b id="pressureTitle">壓力自我</b><br><span class="small" id="pressureDesc">容易提高控制與精確要求，並暫時降低對外互動。</span></p></div></div><div class="actions"><button class="pill" type="button" id="homeBtn"><span>回首頁</span></button><button class="primary" type="button" id="restartBtn"><span>重新預覽</span></button></div><p class="small" id="reportNote" style="margin-top:24px">目前報告數值為介面示意，不代表正式心理評估結果。</p></section></div>
@@ -569,8 +425,6 @@ document.addEventListener('DOMContentLoaded', () => {
     home: $('home'),
     assessment: $('assessment'),
     report: $('report'),
-    langZh: $('langZh'),
-    langEn: $('langEn'),
     startBtn: $('startBtn'),
     reportBtn: $('reportBtn'),
     prevBtn: $('prevBtn'),
@@ -584,7 +438,11 @@ document.addEventListener('DOMContentLoaded', () => {
     facet: $('facet'),
     zh: $('zh'),
     en: $('en'),
-    scale: $('scale')
+    scale: $('scale'),
+    langZh: $('langZh'),
+    langEn: $('langEn'),
+    themeLight: $('themeLight'),
+    themeDark: $('themeDark')
   };
 
 
@@ -683,13 +541,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (el && t[id] !== undefined) el.innerHTML = t[id];
     });
 
-    const isZh = language === 'zh';
-    els.langZh.classList.toggle('is-active', isZh);
-    els.langEn.classList.toggle('is-active', !isZh);
-    els.langZh.setAttribute('aria-checked', String(isZh));
-    els.langEn.setAttribute('aria-checked', String(!isZh));
+    els.langZh.classList.toggle('active', language === 'zh');
+    els.langEn.classList.toggle('active', language === 'en');
     document.documentElement.lang = language === 'zh' ? 'zh-Hant' : 'en';
-    document.title = language === 'zh' ? 'qPersonality 人格特質測驗' : 'qPersonality Personality Test';
+    const languageLabel = $('languageLabel');
+    const themeLabel = $('themeLabel');
+    if (languageLabel) languageLabel.textContent = language === 'zh' ? '語言 / Language' : 'Language / 語言';
+    if (themeLabel) themeLabel.textContent = language === 'zh' ? '外觀 / Appearance' : 'Appearance / 外觀';
 
     if (els.assessment.classList.contains('active')) renderQuestion();
   }
@@ -718,16 +576,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     els.qid.textContent = q.id;
-    els.facet.textContent = language === 'zh' ? q.facet_name_zh : q.facet_name_en;
+    els.facet.textContent = q.facet_name_zh + ' / ' + q.facet_name_en;
     els.zh.textContent = q.zh_tw;
     els.en.textContent = q.en_us;
 
     els.zh.style.display = language === 'zh' ? 'block' : 'none';
     els.en.style.display = language === 'en' ? 'block' : 'none';
 
-    els.num.textContent = language === 'zh'
-      ? `第 ${currentIndex + 1} 題 / 共 ${activeQuestions.length} 題`
-      : `Question ${currentIndex + 1} / ${activeQuestions.length}`;
+    els.num.textContent = `Question ${currentIndex + 1} / ${activeQuestions.length}`;
     const progress = Math.round((currentIndex / activeQuestions.length) * 100);
     els.pct.textContent = progress + '%';
     els.bar.style.width = progress + '%';
@@ -737,7 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.innerHTML = `<span>${n}</span>`;
-      btn.setAttribute('aria-label', language === 'zh' ? `選擇 ${n} 分` : `Choose ${n}`);
+      btn.setAttribute('aria-label', `選擇 ${n} 分`);
       if (answers[q.id] === n) btn.classList.add('on');
       btn.addEventListener('click', () => {
         answers[q.id] = n;
@@ -777,10 +633,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function setLanguage(nextLanguage) {
-    language = nextLanguage;
-    applyLanguage();
+  function toggleLanguage() {
+    language = language === 'zh' ? 'en' : 'zh';
+    initTheme();
+  applyLanguage();
   }
+
+
+  function applyTheme(theme){
+    document.documentElement.dataset.theme = theme;
+    els.themeLight.classList.toggle('active', theme === 'light');
+    els.themeDark.classList.toggle('active', theme === 'dark');
+    localStorage.setItem('qpersonality-theme', theme);
+  }
+
+  function initTheme(){
+    const saved = localStorage.getItem('qpersonality-theme');
+    const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(saved || (systemDark ? 'dark' : 'light'));
+  }
+
+  els.langZh.addEventListener('click', () => {
+    language = 'zh';
+    applyLanguage();
+  });
+  els.langEn.addEventListener('click', () => {
+    language = 'en';
+    applyLanguage();
+  });
+  els.themeLight.addEventListener('click', () => applyTheme('light'));
+  els.themeDark.addEventListener('click', () => applyTheme('dark'));
 
   document.querySelectorAll('[data-test-size]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -789,9 +671,6 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('sel');
     });
   });
-
-  els.langZh.addEventListener('click', () => setLanguage('zh'));
-  els.langEn.addEventListener('click', () => setLanguage('en'));
   els.startBtn.addEventListener('click', startTest);
   els.reportBtn.addEventListener('click', () => showScreen('report'));
   els.prevBtn.addEventListener('click', prevQuestion);
