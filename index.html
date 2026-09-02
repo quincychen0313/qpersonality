@@ -1,9 +1,230 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>qPersonality Preview</title><style>
 :root{--bg:#f4f4f2;--text:#111;--muted:#777;--line:rgba(17,17,17,.08)}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang TC",sans-serif;background:radial-gradient(circle at 20% 10%,#fff,transparent 28%),radial-gradient(circle at 80% 20%,#ddd,transparent 35%),var(--bg);color:var(--text);min-height:100vh}button{font:inherit}.shell{max-width:1180px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;align-items:center}.brand{font-size:24px;font-weight:800}.brand span{font-weight:400;color:#888}.pill,.primary{border-radius:999px;padding:12px 18px;cursor:pointer}.pill{border:1px solid var(--line);background:rgba(255,255,255,.65)}.primary{border:0;background:#111;color:#fff}.screen{display:none}.active{display:block}.hero{padding:90px 0 30px;max-width:850px}.kicker{font-size:13px;letter-spacing:.16em;color:#777;text-transform:uppercase}.hero h1{font-size:clamp(52px,8vw,96px);line-height:.94;letter-spacing:-.06em;margin:16px 0 24px}.hero p{font-size:21px;line-height:1.6;color:#5f5f63;max-width:720px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.modes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:58px}.mode,.card,.panel{background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.85);backdrop-filter:blur(22px);border-radius:30px}.mode{padding:24px;text-align:left;color:inherit;font:inherit;cursor:pointer}.mode strong{font-size:44px;display:block;letter-spacing:-2px}.mode h3{font-size:22px;margin:8px 0}.mode p{color:#777;font-size:14px;line-height:1.5}.mode.sel{outline:2px solid #111}.assess{max-width:920px;margin:40px auto}.progrow{display:flex;justify-content:space-between;color:#777;font-size:13px}.prog{height:5px;background:#ddd;border-radius:99px;overflow:hidden;margin-top:10px}.prog i{display:block;height:100%;background:#111;width:0}.card{margin-top:38px;padding:48px}.meta{font-size:12px;color:#888;margin-bottom:30px}.q{font-size:clamp(30px,4vw,48px);line-height:1.3;letter-spacing:-.03em}.en{font-size:16px;color:#777;margin-top:16px;line-height:1.6}.labels{display:flex;justify-content:space-between;color:#777;font-size:13px;margin:46px 0 14px}.scale{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}.scale button{aspect-ratio:1;border-radius:50%;border:1px solid #ccc;background:#fff;cursor:pointer}.scale button:hover,.scale button.on{background:#111;color:#fff}.nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px}.reporthead{padding:55px 0 24px}.reporthead h2{font-size:clamp(44px,6vw,68px);letter-spacing:-.05em;margin:8px 0}.reportgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.panel{padding:28px}.trait{display:grid;grid-template-columns:160px 1fr 40px;gap:12px;align-items:center;margin:17px 0}.bar{height:8px;background:#e5e5e5;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:#111}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{background:#eee;padding:8px 11px;border-radius:999px;font-size:13px}.paradox{padding:16px 0;border-bottom:1px solid var(--line)}.small{font-size:13px;color:#777;line-height:1.5}@media(max-width:800px){.modes{grid-template-columns:1fr 1fr}.reportgrid{grid-template-columns:1fr}.card{padding:30px 20px}}@media(max-width:520px){.modes{grid-template-columns:1fr}.trait{grid-template-columns:105px 1fr 34px}.shell{padding:16px}}
-</style></head><body><div class="shell"><div class="top"><div class="brand">qPersonality <span>Preview</span></div><button class="pill" type="button" id="langBtn">中 / EN</button></div>
-<section id="home" class="screen active"><div class="hero"><div class="kicker" id="homeKicker">人格特質分析系統</div><h1 id="homeTitle">探索構成你的深層人格模式。</h1><p id="homeDesc">不是把你塞進一個人格盒子，而是建立一張真正屬於你的多維人格地圖。</p><div class="actions"><button class="primary" type="button" id="startBtn">開始預覽測驗</button><button class="pill" type="button" id="reportBtn">直接看結果報告</button></div></div><div class="modes"><button class="mode sel" type="button" data-test-size="24"><strong>24</strong><h3>Snapshot</h3><p id="mode24Desc">3–4 分鐘<br>快速人格掃描</p></button><button class="mode" type="button" data-test-size="60"><strong>60</strong><h3>Core</h3><p id="mode60Desc">8–10 分鐘<br>六大人格＋核心面向</p></button><button class="mode" type="button" data-test-size="120"><strong>120</strong><h3>Deep</h3><p id="mode120Desc">15–20 分鐘<br>深度人格與矛盾分析</p></button><button class="mode" type="button" data-test-size="180"><strong>180</strong><h3>Complete</h3><p id="mode180Desc">25–30 分鐘<br>完整人格地圖</p></button></div></section>
-<section id="assessment" class="screen"><div class="assess"><div class="progrow"><span id="num"></span><span id="pct"></span></div><div class="prog"><i id="bar"></i></div><div class="card"><div class="meta"><span id="qid"></span> · <span id="facet"></span></div><div id="zh" class="q"></div><div id="en" class="en"></div><div class="labels"><span id="scaleLeft">非常不像我</span><span id="scaleRight">非常像我</span></div><div id="scale" class="scale"></div><div class="nav"><button class="pill" type="button" id="prevBtn">上一題</button><span class="small">1 — 7</span><button class="primary" type="button" id="nextBtn">下一題</button></div></div></div></section>
-<section id="report" class="screen"><div class="reporthead"><div class="kicker" id="reportKicker">你的人格特質簽名</div><h2 id="reportTitle">直覺建構者</h2><div id="reportSubtitle" style="color:#666">高開放性 × 高自律 × 中度外向 × 高情緒敏感</div></div><div class="reportgrid"><div class="panel"><h3 id="coreTraitsTitle">6 大核心人格特質</h3><div class="trait"><span id="traitO">開放與探索</span><div class="bar"><i style="width:93%"></i></div><b>93</b></div><div class="trait"><span id="traitC">自律與執行</span><div class="bar"><i style="width:87%"></i></div><b>87</b></div><div class="trait"><span id="traitX">外向與社交</span><div class="bar"><i style="width:64%"></i></div><b>64</b></div><div class="trait"><span id="traitA">親和與協調</span><div class="bar"><i style="width:74%"></i></div><b>74</b></div><div class="trait"><span id="traitE">情緒敏感度</span><div class="bar"><i style="width:81%"></i></div><b>81</b></div><div class="trait"><span id="traitH">誠信與自我定位</span><div class="bar"><i style="width:78%"></i></div><b>78</b></div></div><div class="panel"><h3 id="strongestTitle">最突出的細項人格</h3><div class="chips"><span class="chip" id="chip1">想像力 96</span><span class="chip" id="chip2">審美敏感 95</span><span class="chip" id="chip3">成就驅力 91</span><span class="chip" id="chip4">深思熟慮 89</span><span class="chip" id="chip5">情緒強度 88</span></div><h3 id="confidenceTitle" style="margin-top:30px">人格分析可信度</h3><div style="font-size:48px;font-weight:800">94%</div><div class="small" id="confidenceDesc">回應模式穩定，主要人格構面具有高一致性。</div></div><div class="panel"><h3 id="paradoxTitle">人格矛盾組合</h3><div class="paradox"><b id="p1Title">高同理 × 較低信任</b><div class="small" id="p1Desc">容易理解別人的感受，但真正讓人進入內在世界需要時間。</div></div><div class="paradox"><b id="p2Title">高社交自信 × 中低社交需求</b><div class="small" id="p2Desc">可以在人群中自在，但不代表需要大量社交來獲得能量。</div></div><div class="paradox"><b id="p3Title">高創造 × 高精確</b><div class="small" id="p3Desc">不只會產生點子，也傾向把點子整理到可以真正落地。</div></div></div><div class="panel"><h3 id="threeSelvesTitle">三種自我狀態</h3><p><b id="publicTitle">外在自我</b><br><span class="small" id="publicDesc">沉著、清楚、有標準、具有想法。</span></p><p><b id="privateTitle">私下自我</b><br><span class="small" id="privateDesc">感受細膩、思緒密集、需要自己的空間。</span></p><p><b id="pressureTitle">壓力自我</b><br><span class="small" id="pressureDesc">容易提高控制與精確要求，並暫時降低對外互動。</span></p></div></div><div class="actions"><button class="pill" type="button" id="homeBtn">回首頁</button><button class="primary" type="button" id="restartBtn">重新預覽</button></div><p class="small" id="reportNote" style="margin-top:24px">目前報告數值為介面示意，不代表正式心理評估結果。</p></section></div>
+
+/* ===== qPersonality Liquid Glass Design System v2 ===== */
+:root{
+  --glass-bg: rgba(255,255,255,.22);
+  --glass-bg-strong: rgba(255,255,255,.34);
+  --glass-line: rgba(255,255,255,.62);
+  --glass-shadow: 0 18px 60px rgba(0,0,0,.10);
+  --glass-shadow-soft: 0 10px 32px rgba(0,0,0,.08);
+  --glass-highlight: inset 0 1px 0 rgba(255,255,255,.75);
+  --glass-lowlight: inset 0 -1px 0 rgba(255,255,255,.14);
+  --text-main:#111318;
+  --text-muted:#666a73;
+}
+body{
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255,255,255,.95), transparent 30%),
+    radial-gradient(circle at 78% 18%, rgba(220,228,244,.72), transparent 34%),
+    radial-gradient(circle at 50% 82%, rgba(235,240,248,.58), transparent 38%),
+    linear-gradient(180deg,#f7f8fa 0%,#eef1f5 100%);
+  background-attachment:fixed;
+  color:var(--text-main);
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.20), transparent 28%),
+    linear-gradient(300deg, rgba(255,255,255,.14), transparent 35%);
+  z-index:-1;
+}
+.topbar{
+  position:sticky;
+  top:14px;
+  z-index:20;
+  padding:10px 14px;
+  margin-left:-14px;
+  margin-right:-14px;
+  border-radius:999px;
+  -webkit-backdrop-filter:blur(28px) saturate(150%);
+  backdrop-filter:blur(28px) saturate(150%);
+  background:linear-gradient(180deg,rgba(255,255,255,.46),rgba(255,255,255,.22));
+  border:1px solid rgba(255,255,255,.66);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.76),
+    0 10px 34px rgba(0,0,0,.07);
+}
+.brand{
+  text-shadow:0 1px 0 rgba(255,255,255,.6);
+}
+.hero{
+  position:relative;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  right:-120px;
+  top:50px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.65),rgba(255,255,255,0));
+  filter:blur(10px);
+  pointer-events:none;
+}
+.mode,
+.qcard,
+.panel{
+  -webkit-backdrop-filter:blur(28px) saturate(165%);
+  backdrop-filter:blur(28px) saturate(165%);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.20));
+  border:1px solid var(--glass-line);
+  box-shadow:
+    var(--glass-highlight),
+    var(--glass-lowlight),
+    var(--glass-shadow-soft);
+}
+.mode{
+  border-radius:34px !important;
+  overflow:hidden;
+}
+.mode::after{
+  content:"";
+  position:absolute;
+  width:90px;
+  height:90px;
+  top:-42px;
+  right:-18px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.48),transparent 70%);
+  pointer-events:none;
+}
+.qcard{
+  position:relative;
+  overflow:hidden;
+}
+.qcard::before{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  right:-80px;
+  top:-130px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.55),transparent 68%);
+  pointer-events:none;
+}
+.panel{
+  position:relative;
+  overflow:hidden;
+}
+.panel::before{
+  content:"";
+  position:absolute;
+  width:140px;
+  height:140px;
+  top:-75px;
+  right:-55px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.48),transparent 72%);
+  pointer-events:none;
+}
+.progress{
+  height:9px !important;
+  padding:2px;
+  background:rgba(255,255,255,.30) !important;
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:
+    inset 0 1px 3px rgba(0,0,0,.06),
+    0 1px 0 rgba(255,255,255,.55);
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+}
+.progress > div,
+#bar{
+  height:100%;
+  border-radius:999px;
+  background:
+    linear-gradient(90deg, rgba(25,28,34,.92), rgba(60,65,75,.86)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    0 2px 10px rgba(0,0,0,.15);
+}
+.bar{
+  height:10px !important;
+  padding:2px;
+  background:rgba(255,255,255,.30) !important;
+  border:1px solid rgba(255,255,255,.50);
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.05);
+}
+.bar i{
+  background:
+    linear-gradient(90deg,rgba(30,33,40,.92),rgba(94,101,116,.82)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    0 2px 8px rgba(0,0,0,.12);
+}
+.chip{
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  backdrop-filter:blur(18px) saturate(150%);
+  background:linear-gradient(180deg,rgba(255,255,255,.42),rgba(255,255,255,.22)) !important;
+  border:1px solid rgba(255,255,255,.58);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.68),
+    0 5px 16px rgba(0,0,0,.06);
+}
+.qmeta span{
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.28);
+  border:1px solid rgba(255,255,255,.52);
+  -webkit-backdrop-filter:blur(16px);
+  backdrop-filter:blur(16px);
+}
+.scale button{
+  overflow:hidden;
+}
+.scale button::after{
+  content:"";
+  position:absolute;
+  left:18%;
+  right:18%;
+  top:2px;
+  height:38%;
+  border-radius:999px;
+  background:linear-gradient(180deg,rgba(255,255,255,.50),rgba(255,255,255,0));
+  pointer-events:none;
+}
+.primary{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.48),rgba(255,255,255,.20)) !important;
+}
+.primary:hover{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.62),rgba(255,255,255,.26)) !important;
+}
+.mode.sel{
+  border-color:rgba(255,255,255,.92) !important;
+  transform:translateY(-1px);
+}
+.mode.sel::before{
+  background:linear-gradient(180deg,rgba(255,255,255,.52),rgba(255,255,255,.10)) !important;
+}
+.kicker{
+  opacity:.76;
+}
+h1,h2,h3{
+  text-shadow:0 1px 0 rgba(255,255,255,.55);
+}
+@media (max-width:560px){
+  .topbar{
+    top:8px;
+    margin-left:0;
+    margin-right:0;
+  }
+  .mode{border-radius:28px !important}
+  .qcard,.panel{border-radius:28px !important}
+}
+
+</style></head><body><div class="shell"><div class="top"><div class="brand">qPersonality <span>Preview</span></div><button class="pill" type="button" id="langBtn"><span>EN</span></button></div>
+<section id="home" class="screen active"><div class="hero"><div class="kicker" id="homeKicker">人格特質分析系統</div><h1 id="homeTitle">探索構成你的深層人格模式。</h1><p id="homeDesc">不是把你塞進一個人格盒子，而是建立一張真正屬於你的多維人格地圖。</p><div class="actions"><button class="primary" type="button" id="startBtn"><span>開始預覽測驗</span></button><button class="pill" type="button" id="reportBtn"><span>直接看結果報告</span></button></div></div><div class="modes"><button class="mode sel" type="button" data-test-size="24"><strong>24</strong><h3>Snapshot</h3><p id="mode24Desc">3–4 分鐘<br>快速人格掃描</p></button><button class="mode" type="button" data-test-size="60"><strong>60</strong><h3>Core</h3><p id="mode60Desc">8–10 分鐘<br>六大人格＋核心面向</p></button><button class="mode" type="button" data-test-size="120"><strong>120</strong><h3>Deep</h3><p id="mode120Desc">15–20 分鐘<br>深度人格與矛盾分析</p></button><button class="mode" type="button" data-test-size="180"><strong>180</strong><h3>Complete</h3><p id="mode180Desc">25–30 分鐘<br>完整人格地圖</p></button></div></section>
+<section id="assessment" class="screen"><div class="assess"><div class="progrow"><span id="num"></span><span id="pct"></span></div><div class="prog"><i id="bar"></i></div><div class="card"><div class="meta"><span id="qid"></span> · <span id="facet"></span></div><div id="zh" class="q"></div><div id="en" class="en"></div><div class="labels"><span id="scaleLeft">非常不像我</span><span id="scaleRight">非常像我</span></div><div id="scale" class="scale"></div><div class="nav"><button class="pill" type="button" id="prevBtn"><span>上一題</span></button><span class="small">1 — 7</span><button class="primary" type="button" id="nextBtn"><span>下一題</span></button></div></div></div></section>
+<section id="report" class="screen"><div class="reporthead"><div class="kicker" id="reportKicker">你的人格特質簽名</div><h2 id="reportTitle">直覺建構者</h2><div id="reportSubtitle" style="color:#666">高開放性 × 高自律 × 中度外向 × 高情緒敏感</div></div><div class="reportgrid"><div class="panel"><h3 id="coreTraitsTitle">6 大核心人格特質</h3><div class="trait"><span id="traitO">開放與探索</span><div class="bar"><i style="width:93%"></i></div><b>93</b></div><div class="trait"><span id="traitC">自律與執行</span><div class="bar"><i style="width:87%"></i></div><b>87</b></div><div class="trait"><span id="traitX">外向與社交</span><div class="bar"><i style="width:64%"></i></div><b>64</b></div><div class="trait"><span id="traitA">親和與協調</span><div class="bar"><i style="width:74%"></i></div><b>74</b></div><div class="trait"><span id="traitE">情緒敏感度</span><div class="bar"><i style="width:81%"></i></div><b>81</b></div><div class="trait"><span id="traitH">誠信與自我定位</span><div class="bar"><i style="width:78%"></i></div><b>78</b></div></div><div class="panel"><h3 id="strongestTitle">最突出的細項人格</h3><div class="chips"><span class="chip" id="chip1">想像力 96</span><span class="chip" id="chip2">審美敏感 95</span><span class="chip" id="chip3">成就驅力 91</span><span class="chip" id="chip4">深思熟慮 89</span><span class="chip" id="chip5">情緒強度 88</span></div><h3 id="confidenceTitle" style="margin-top:30px">人格分析可信度</h3><div style="font-size:48px;font-weight:800">94%</div><div class="small" id="confidenceDesc">回應模式穩定，主要人格構面具有高一致性。</div></div><div class="panel"><h3 id="paradoxTitle">人格矛盾組合</h3><div class="paradox"><b id="p1Title">高同理 × 較低信任</b><div class="small" id="p1Desc">容易理解別人的感受，但真正讓人進入內在世界需要時間。</div></div><div class="paradox"><b id="p2Title">高社交自信 × 中低社交需求</b><div class="small" id="p2Desc">可以在人群中自在，但不代表需要大量社交來獲得能量。</div></div><div class="paradox"><b id="p3Title">高創造 × 高精確</b><div class="small" id="p3Desc">不只會產生點子，也傾向把點子整理到可以真正落地。</div></div></div><div class="panel"><h3 id="threeSelvesTitle">三種自我狀態</h3><p><b id="publicTitle">外在自我</b><br><span class="small" id="publicDesc">沉著、清楚、有標準、具有想法。</span></p><p><b id="privateTitle">私下自我</b><br><span class="small" id="privateDesc">感受細膩、思緒密集、需要自己的空間。</span></p><p><b id="pressureTitle">壓力自我</b><br><span class="small" id="pressureDesc">容易提高控制與精確要求，並暫時降低對外互動。</span></p></div></div><div class="actions"><button class="pill" type="button" id="homeBtn"><span>回首頁</span></button><button class="primary" type="button" id="restartBtn"><span>重新預覽</span></button></div><p class="small" id="reportNote" style="margin-top:24px">目前報告數值為介面示意，不代表正式心理評估結果。</p></section></div>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const allQuestions = [{"id": "QP001", "version": "1.0", "domain": "O", "primary_facet": "O1", "facet_name_zh": "想像力", "facet_name_en": "Imagination", "zh_tw": "我常在腦中想像尚未發生的情境。", "en_us": "I often imagine situations that have not happened yet.", "type": "direct", "reverse_key": false, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.15}], "consistency_pair": "O1_P1", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}, {"id": "QP002", "version": "1.0", "domain": "O", "primary_facet": "O1", "facet_name_zh": "想像力", "facet_name_en": "Imagination", "zh_tw": "看到一個普通物件時，我常會想到它還能變成什麼。", "en_us": "When I see an ordinary object, I often imagine what else it could become.", "type": "behavioral", "reverse_key": false, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.15}], "consistency_pair": "O1_P2", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}, {"id": "QP003", "version": "1.0", "domain": "O", "primary_facet": "O1", "facet_name_zh": "想像力", "facet_name_en": "Imagination", "zh_tw": "故事、影像或音樂很容易在我腦中形成鮮明畫面。", "en_us": "Stories, images, or music easily create vivid scenes in my mind.", "type": "direct", "reverse_key": false, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.15}], "consistency_pair": "O1_P3", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}, {"id": "QP004", "version": "1.0", "domain": "O", "primary_facet": "O1", "facet_name_zh": "想像力", "facet_name_en": "Imagination", "zh_tw": "我通常只關注眼前具體的事，不太會想像其他可能性。", "en_us": "I usually focus only on what is concrete and rarely imagine other possibilities.", "type": "direct", "reverse_key": true, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.15}], "consistency_pair": "O1_P1", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}, {"id": "QP005", "version": "1.0", "domain": "O", "primary_facet": "O1", "facet_name_zh": "想像力", "facet_name_en": "Imagination", "zh_tw": "面對模糊的概念時，我很難在腦中形成畫面。", "en_us": "I find it hard to form mental images when an idea is abstract.", "type": "direct", "reverse_key": true, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.15}], "consistency_pair": "O1_P2", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}, {"id": "QP006", "version": "1.0", "domain": "O", "primary_facet": "O1", "facet_name_zh": "想像力", "facet_name_en": "Imagination", "zh_tw": "如果沒有明確範例，我通常不知道該從哪裡開始發想。", "en_us": "Without a clear example, I usually do not know where to begin generating ideas.", "type": "situational", "reverse_key": true, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.15}], "consistency_pair": "O1_P3", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}, {"id": "QP007", "version": "1.0", "domain": "O", "primary_facet": "O2", "facet_name_zh": "求知慾", "facet_name_en": "Curiosity", "zh_tw": "遇到不懂的事情，我通常會想辦法查到原因。", "en_us": "When I do not understand something, I usually try to find out why.", "type": "behavioral", "reverse_key": false, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.2}], "consistency_pair": "O2_P1", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}, {"id": "QP008", "version": "1.0", "domain": "O", "primary_facet": "O2", "facet_name_zh": "求知慾", "facet_name_en": "Curiosity", "zh_tw": "我會因為好奇而閱讀原本不在計畫中的主題。", "en_us": "Curiosity often leads me to read about topics I had not planned to explore.", "type": "behavioral", "reverse_key": false, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.2}], "consistency_pair": "O2_P2", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}, {"id": "QP009", "version": "1.0", "domain": "O", "primary_facet": "O2", "facet_name_zh": "求知慾", "facet_name_en": "Curiosity", "zh_tw": "我享受把一個問題追問到更深的層次。", "en_us": "I enjoy following a question to a deeper level.", "type": "direct", "reverse_key": false, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.2}], "consistency_pair": "O2_P3", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}, {"id": "QP010", "version": "1.0", "domain": "O", "primary_facet": "O2", "facet_name_zh": "求知慾", "facet_name_en": "Curiosity", "zh_tw": "如果一件事和我目前沒有直接關係，我通常不太想了解。", "en_us": "If something is not directly relevant to me, I usually have little interest in learning about it.", "type": "direct", "reverse_key": true, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.2}], "consistency_pair": "O2_P1", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}, {"id": "QP011", "version": "1.0", "domain": "O", "primary_facet": "O2", "facet_name_zh": "求知慾", "facet_name_en": "Curiosity", "zh_tw": "知道大概怎麼回事之後，我通常就不會再追究細節。", "en_us": "Once I understand the general idea, I usually stop digging into the details.", "type": "behavioral", "reverse_key": true, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.2}], "consistency_pair": "O2_P2", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}, {"id": "QP012", "version": "1.0", "domain": "O", "primary_facet": "O2", "facet_name_zh": "求知慾", "facet_name_en": "Curiosity", "zh_tw": "面對陌生知識時，我傾向先略過，而不是花時間弄懂。", "en_us": "When I encounter unfamiliar knowledge, I tend to skip it rather than spend time understanding it.", "type": "situational", "reverse_key": true, "primary_weight": 1.0, "secondary_facets": [{"facet": "O4", "weight": 0.2}], "consistency_pair": "O2_P3", "social_desirability_risk": "low", "attention_check": false, "status": "draft_for_validation"}];
@@ -122,14 +343,17 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
     textIds.forEach(id => {
       const el = $(id);
-      if (el && t[id] !== undefined) el.textContent = t[id];
+      if (el && t[id] !== undefined) {
+        if (['startBtn','reportBtn','homeBtn','restartBtn'].includes(id)) el.innerHTML = `<span>${t[id]}</span>`;
+        else el.textContent = t[id];
+      }
     });
     ['mode24Desc','mode60Desc','mode120Desc','mode180Desc'].forEach(id => {
       const el = $(id);
       if (el && t[id] !== undefined) el.innerHTML = t[id];
     });
 
-    els.langBtn.textContent = language === 'zh' ? 'EN' : '中文';
+    els.langBtn.innerHTML = `<span>${language === 'zh' ? 'EN' : '中文'}</span>`;
     document.documentElement.lang = language === 'zh' ? 'zh-Hant' : 'en';
 
     if (els.assessment.classList.contains('active')) renderQuestion();
@@ -175,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let n = 1; n <= 7; n++) {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.textContent = String(n);
+      btn.innerHTML = `<span>${n}</span>`;
       btn.setAttribute('aria-label', `選擇 ${n} 分`);
       if (answers[q.id] === n) btn.classList.add('on');
       btn.addEventListener('click', () => {
@@ -194,8 +418,8 @@ document.addEventListener('DOMContentLoaded', () => {
     els.prevBtn.disabled = currentIndex === 0;
     els.prevBtn.style.opacity = currentIndex === 0 ? '.45' : '1';
     const t = translations[language];
-    els.prevBtn.textContent = t.prevBtn;
-    els.nextBtn.textContent = currentIndex === activeQuestions.length - 1 ? t.resultBtn : t.nextBtn;
+    els.prevBtn.innerHTML = `<span>${t.prevBtn}</span>`;
+    els.nextBtn.innerHTML = `<span>${currentIndex === activeQuestions.length - 1 ? t.resultBtn : t.nextBtn}</span>`;
   }
 
   function nextQuestion() {
@@ -238,5 +462,18 @@ document.addEventListener('DOMContentLoaded', () => {
   els.restartBtn.addEventListener('click', startTest);
 
   applyLanguage();
+
+  document.querySelectorAll('.panel,.mode').forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const r = el.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width) * 100;
+      const y = ((e.clientY - r.top) / r.height) * 100;
+      el.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,.58), rgba(255,255,255,.22) 44%, rgba(255,255,255,.18) 100%)`;
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.background = '';
+    });
+  });
+
 });
 </script></body></html>
