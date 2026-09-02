@@ -1,4 +1,4 @@
-# qPersonality Liquid Glass UI v2
+# qPersonality Liquid Glass UI v2 — Segmented Language Control
 
 Full Apple-inspired Liquid Glass visual system.
 
@@ -10,7 +10,8 @@ Updated:
 - Glass chips
 - Glass progress bars
 - Glass score bars
-- Capsule language switch
+- Two-segment Traditional Chinese / English Liquid Glass language control
+- Warm amber active language with deep translucent capsule surround
 - Capsule action buttons
 - Capsule 1–7 response controls
 - Soft pointer-responsive highlights on panels

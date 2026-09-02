@@ -221,7 +221,127 @@ h1,h2,h3{
   .qcard,.panel{border-radius:28px !important}
 }
 
-</style></head><body><div class="shell"><div class="top"><div class="brand">qPersonality <span>Preview</span></div><button class="pill" type="button" id="langBtn"><span>EN</span></button></div>
+/* ===== Bilingual segmented language control ===== */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:24px;
+}
+.language-switcher{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:7px;
+  flex:0 0 auto;
+}
+.language-label{
+  margin-left:4px;
+  color:#69768a;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.02em;
+  line-height:1;
+  text-shadow:0 1px 0 rgba(255,255,255,.66);
+}
+.language-segmented{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  width:250px;
+  min-height:56px;
+  padding:5px;
+  border:1px solid rgba(129,151,181,.28);
+  border-radius:999px;
+  background:
+    linear-gradient(180deg,rgba(14,31,54,.94),rgba(8,20,39,.89));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.28),
+    0 1px 0 rgba(255,255,255,.62),
+    0 10px 28px rgba(17,34,59,.20);
+  -webkit-backdrop-filter:blur(24px) saturate(150%);
+  backdrop-filter:blur(24px) saturate(150%);
+  isolation:isolate;
+}
+.language-segmented::before{
+  content:"";
+  position:absolute;
+  inset:1px 8% auto;
+  height:45%;
+  border-radius:999px;
+  background:linear-gradient(180deg,rgba(255,255,255,.09),transparent);
+  pointer-events:none;
+  z-index:-1;
+}
+.language-option{
+  position:relative;
+  min-width:0;
+  min-height:46px;
+  padding:0 20px;
+  border:0;
+  border-radius:999px;
+  background:transparent;
+  color:#aab9ce;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:750;
+  letter-spacing:-.01em;
+  transition:
+    color .22s ease,
+    background .28s cubic-bezier(.2,.8,.2,1),
+    box-shadow .28s ease,
+    transform .14s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.language-option:hover:not(.is-active){
+  color:#d6e0ee;
+  background:rgba(255,255,255,.055);
+}
+.language-option:active{
+  transform:scale(.965);
+}
+.language-option.is-active{
+  color:#11243f;
+  background:
+    linear-gradient(180deg,#ffca63 0%,#ffb83f 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.74),
+    inset 0 -1px 0 rgba(166,89,0,.16),
+    0 5px 16px rgba(228,143,15,.30),
+    0 1px 2px rgba(0,0,0,.18);
+}
+.language-option.is-active::after{
+  content:"";
+  position:absolute;
+  left:15%;
+  right:15%;
+  top:2px;
+  height:42%;
+  border-radius:999px;
+  background:linear-gradient(180deg,rgba(255,255,255,.40),transparent);
+  pointer-events:none;
+}
+.language-option:focus-visible{
+  outline:3px solid rgba(255,184,63,.38);
+  outline-offset:3px;
+}
+@media (max-width:560px){
+  .top{align-items:center;gap:14px}
+  .brand{font-size:19px}
+  .language-label{font-size:11px}
+  .language-segmented{width:190px;min-height:50px;padding:4px}
+  .language-option{min-height:40px;padding:0 11px;font-size:14px}
+}
+@media (max-width:400px){
+  .top{align-items:flex-start;flex-direction:column}
+  .language-switcher{align-self:flex-end}
+}
+@media (prefers-reduced-motion:reduce){
+  .language-option{transition:none}
+}
+
+</style></head><body><div class="shell"><div class="top"><div class="brand">qPersonality <span>Preview</span></div><div class="language-switcher"><div class="language-label" id="languageLabel">語言 / Language</div><div class="language-segmented" role="radiogroup" aria-labelledby="languageLabel"><button class="language-option is-active" type="button" id="langZh" role="radio" aria-checked="true"><span>繁中</span></button><button class="language-option" type="button" id="langEn" role="radio" aria-checked="false"><span>English</span></button></div></div></div>
 <section id="home" class="screen active"><div class="hero"><div class="kicker" id="homeKicker">人格特質分析系統</div><h1 id="homeTitle">探索構成你的深層人格模式。</h1><p id="homeDesc">不是把你塞進一個人格盒子，而是建立一張真正屬於你的多維人格地圖。</p><div class="actions"><button class="primary" type="button" id="startBtn"><span>開始預覽測驗</span></button><button class="pill" type="button" id="reportBtn"><span>直接看結果報告</span></button></div></div><div class="modes"><button class="mode sel" type="button" data-test-size="24"><strong>24</strong><h3>Snapshot</h3><p id="mode24Desc">3–4 分鐘<br>快速人格掃描</p></button><button class="mode" type="button" data-test-size="60"><strong>60</strong><h3>Core</h3><p id="mode60Desc">8–10 分鐘<br>六大人格＋核心面向</p></button><button class="mode" type="button" data-test-size="120"><strong>120</strong><h3>Deep</h3><p id="mode120Desc">15–20 分鐘<br>深度人格與矛盾分析</p></button><button class="mode" type="button" data-test-size="180"><strong>180</strong><h3>Complete</h3><p id="mode180Desc">25–30 分鐘<br>完整人格地圖</p></button></div></section>
 <section id="assessment" class="screen"><div class="assess"><div class="progrow"><span id="num"></span><span id="pct"></span></div><div class="prog"><i id="bar"></i></div><div class="card"><div class="meta"><span id="qid"></span> · <span id="facet"></span></div><div id="zh" class="q"></div><div id="en" class="en"></div><div class="labels"><span id="scaleLeft">非常不像我</span><span id="scaleRight">非常像我</span></div><div id="scale" class="scale"></div><div class="nav"><button class="pill" type="button" id="prevBtn"><span>上一題</span></button><span class="small">1 — 7</span><button class="primary" type="button" id="nextBtn"><span>下一題</span></button></div></div></div></section>
 <section id="report" class="screen"><div class="reporthead"><div class="kicker" id="reportKicker">你的人格特質簽名</div><h2 id="reportTitle">直覺建構者</h2><div id="reportSubtitle" style="color:#666">高開放性 × 高自律 × 中度外向 × 高情緒敏感</div></div><div class="reportgrid"><div class="panel"><h3 id="coreTraitsTitle">6 大核心人格特質</h3><div class="trait"><span id="traitO">開放與探索</span><div class="bar"><i style="width:93%"></i></div><b>93</b></div><div class="trait"><span id="traitC">自律與執行</span><div class="bar"><i style="width:87%"></i></div><b>87</b></div><div class="trait"><span id="traitX">外向與社交</span><div class="bar"><i style="width:64%"></i></div><b>64</b></div><div class="trait"><span id="traitA">親和與協調</span><div class="bar"><i style="width:74%"></i></div><b>74</b></div><div class="trait"><span id="traitE">情緒敏感度</span><div class="bar"><i style="width:81%"></i></div><b>81</b></div><div class="trait"><span id="traitH">誠信與自我定位</span><div class="bar"><i style="width:78%"></i></div><b>78</b></div></div><div class="panel"><h3 id="strongestTitle">最突出的細項人格</h3><div class="chips"><span class="chip" id="chip1">想像力 96</span><span class="chip" id="chip2">審美敏感 95</span><span class="chip" id="chip3">成就驅力 91</span><span class="chip" id="chip4">深思熟慮 89</span><span class="chip" id="chip5">情緒強度 88</span></div><h3 id="confidenceTitle" style="margin-top:30px">人格分析可信度</h3><div style="font-size:48px;font-weight:800">94%</div><div class="small" id="confidenceDesc">回應模式穩定，主要人格構面具有高一致性。</div></div><div class="panel"><h3 id="paradoxTitle">人格矛盾組合</h3><div class="paradox"><b id="p1Title">高同理 × 較低信任</b><div class="small" id="p1Desc">容易理解別人的感受，但真正讓人進入內在世界需要時間。</div></div><div class="paradox"><b id="p2Title">高社交自信 × 中低社交需求</b><div class="small" id="p2Desc">可以在人群中自在，但不代表需要大量社交來獲得能量。</div></div><div class="paradox"><b id="p3Title">高創造 × 高精確</b><div class="small" id="p3Desc">不只會產生點子，也傾向把點子整理到可以真正落地。</div></div></div><div class="panel"><h3 id="threeSelvesTitle">三種自我狀態</h3><p><b id="publicTitle">外在自我</b><br><span class="small" id="publicDesc">沉著、清楚、有標準、具有想法。</span></p><p><b id="privateTitle">私下自我</b><br><span class="small" id="privateDesc">感受細膩、思緒密集、需要自己的空間。</span></p><p><b id="pressureTitle">壓力自我</b><br><span class="small" id="pressureDesc">容易提高控制與精確要求，並暫時降低對外互動。</span></p></div></div><div class="actions"><button class="pill" type="button" id="homeBtn"><span>回首頁</span></button><button class="primary" type="button" id="restartBtn"><span>重新預覽</span></button></div><p class="small" id="reportNote" style="margin-top:24px">目前報告數值為介面示意，不代表正式心理評估結果。</p></section></div>
@@ -240,7 +360,8 @@ document.addEventListener('DOMContentLoaded', () => {
     home: $('home'),
     assessment: $('assessment'),
     report: $('report'),
-    langBtn: $('langBtn'),
+    langZh: $('langZh'),
+    langEn: $('langEn'),
     startBtn: $('startBtn'),
     reportBtn: $('reportBtn'),
     prevBtn: $('prevBtn'),
@@ -353,8 +474,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (el && t[id] !== undefined) el.innerHTML = t[id];
     });
 
-    els.langBtn.innerHTML = `<span>${language === 'zh' ? 'EN' : '中文'}</span>`;
+    const isZh = language === 'zh';
+    els.langZh.classList.toggle('is-active', isZh);
+    els.langEn.classList.toggle('is-active', !isZh);
+    els.langZh.setAttribute('aria-checked', String(isZh));
+    els.langEn.setAttribute('aria-checked', String(!isZh));
     document.documentElement.lang = language === 'zh' ? 'zh-Hant' : 'en';
+    document.title = language === 'zh' ? 'qPersonality 人格特質測驗' : 'qPersonality Personality Test';
 
     if (els.assessment.classList.contains('active')) renderQuestion();
   }
@@ -383,14 +509,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     els.qid.textContent = q.id;
-    els.facet.textContent = q.facet_name_zh + ' / ' + q.facet_name_en;
+    els.facet.textContent = language === 'zh' ? q.facet_name_zh : q.facet_name_en;
     els.zh.textContent = q.zh_tw;
     els.en.textContent = q.en_us;
 
     els.zh.style.display = language === 'zh' ? 'block' : 'none';
     els.en.style.display = language === 'en' ? 'block' : 'none';
 
-    els.num.textContent = `Question ${currentIndex + 1} / ${activeQuestions.length}`;
+    els.num.textContent = language === 'zh'
+      ? `第 ${currentIndex + 1} 題 / 共 ${activeQuestions.length} 題`
+      : `Question ${currentIndex + 1} / ${activeQuestions.length}`;
     const progress = Math.round((currentIndex / activeQuestions.length) * 100);
     els.pct.textContent = progress + '%';
     els.bar.style.width = progress + '%';
@@ -400,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.innerHTML = `<span>${n}</span>`;
-      btn.setAttribute('aria-label', `選擇 ${n} 分`);
+      btn.setAttribute('aria-label', language === 'zh' ? `選擇 ${n} 分` : `Choose ${n}`);
       if (answers[q.id] === n) btn.classList.add('on');
       btn.addEventListener('click', () => {
         answers[q.id] = n;
@@ -440,8 +568,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function toggleLanguage() {
-    language = language === 'zh' ? 'en' : 'zh';
+  function setLanguage(nextLanguage) {
+    language = nextLanguage;
     applyLanguage();
   }
 
@@ -453,7 +581,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  els.langBtn.addEventListener('click', toggleLanguage);
+  els.langZh.addEventListener('click', () => setLanguage('zh'));
+  els.langEn.addEventListener('click', () => setLanguage('en'));
   els.startBtn.addEventListener('click', startTest);
   els.reportBtn.addEventListener('click', () => showScreen('report'));
   els.prevBtn.addEventListener('click', prevQuestion);
