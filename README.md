@@ -1,13 +1,11 @@
 # qPersonality
 
-GitHub Pages deployment package.
+Fixed GitHub Pages build.
 
-## Required GitHub Pages setting
-
-Repository → Settings → Pages
-
+Upload the CONTENTS of this folder to the repository root.
+GitHub Pages:
 - Source: Deploy from a branch
 - Branch: main
 - Folder: /(root)
 
-The public website entry point is `index.html`.
+This build removes browser-dependent implicit DOM globals and uses explicit event listeners.
