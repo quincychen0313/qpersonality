@@ -1,11 +1,13 @@
 # qPersonality
 
-Fixed GitHub Pages build.
+Bilingual GitHub Pages build.
 
-Upload the CONTENTS of this folder to the repository root.
-GitHub Pages:
-- Source: Deploy from a branch
-- Branch: main
-- Folder: /(root)
+This version fixes the language switch so it changes:
+- Home screen
+- Test controls and scale labels
+- Question language
+- Results page
+- Navigation buttons
 
-This build removes browser-dependent implicit DOM globals and uses explicit event listeners.
+Default language: Traditional Chinese
+Language button: EN / 中文
