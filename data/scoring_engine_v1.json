@@ -1,0 +1,41 @@
+{
+  "scale": {
+    "min": 1,
+    "max": 7,
+    "labels_zh": {
+      "1": "非常不像我",
+      "4": "一半像我",
+      "7": "非常像我"
+    },
+    "labels_en": {
+      "1": "Not like me at all",
+      "4": "Somewhat like me",
+      "7": "Very much like me"
+    }
+  },
+  "reverse_scoring": "reversed_response = 8 - response",
+  "normalization": "normalized_0_100 = (scored_response - 1) / 6 * 100",
+  "facet_score": "weighted mean of all primary and secondary contributions assigned to the facet",
+  "domain_score": "mean of the five facet scores within the domain, unless later calibration supplies empirical facet weights",
+  "confidence_components": {
+    "item_count": "0.25",
+    "internal_consistency": "0.30",
+    "response_consistency": "0.20",
+    "response_quality": "0.15",
+    "coverage": "0.10"
+  },
+  "rqi_components": {
+    "speed_anomaly": 0.2,
+    "straight_lining": 0.2,
+    "contradiction_rate": 0.25,
+    "attention_checks": 0.2,
+    "extreme_response_bias": 0.15
+  },
+  "rules": [
+    "Do not interpret percentiles until a real normative sample exists.",
+    "Do not call impression-management flags 'lying'.",
+    "Do not use AI to calculate trait scores.",
+    "AI narrative receives only computed scores, confidence, paradoxes, and safe metadata.",
+    "All draft items require pilot testing, reliability analysis, item-total correlation checks, and measurement-invariance review before high-stakes use."
+  ]
+}
