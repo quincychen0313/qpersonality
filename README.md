@@ -11,7 +11,7 @@ Updated:
 - Glass progress bars
 - Glass score bars
 - Two-segment Traditional Chinese / English Liquid Glass language control
-- Warm amber active language with deep translucent capsule surround
+- Neutral light-glass language control matching the site action buttons
 - Stable bilingual layout: translated copy never resizes or shifts its cards and controls
 - Capsule action buttons
 - Capsule 1–7 response controls
