@@ -341,6 +341,168 @@ h1,h2,h3{
   .language-option{transition:none}
 }
 
+/* ===== Stable bilingual layout: text changes, geometry does not ===== */
+html{scrollbar-gutter:stable}
+.top{
+  height:75px;
+}
+.brand{
+  height:29px;
+  line-height:29px;
+  overflow:hidden;
+}
+#homeKicker{
+  height:19px;
+  line-height:19px;
+  overflow:hidden;
+}
+.hero h1{
+  height:181px;
+  overflow:hidden;
+}
+html[lang="en"] .hero h1{
+  font-size:clamp(48px,6.4vw,78px);
+  line-height:1.05;
+}
+#homeDesc{
+  height:68px;
+  overflow:hidden;
+}
+#home .actions{
+  display:grid;
+  grid-template-columns:180px 210px;
+  align-items:stretch;
+}
+#home .actions button,
+#report > .actions button,
+.nav button{
+  width:100%;
+  height:49px;
+  padding-top:0;
+  padding-bottom:0;
+  white-space:nowrap;
+}
+.mode{
+  height:206px;
+}
+.mode p{
+  height:42px;
+  overflow:hidden;
+}
+.progrow{
+  height:19px;
+  line-height:19px;
+}
+.meta{
+  height:14px;
+  line-height:14px;
+}
+#zh,
+#en{
+  height:64px;
+  margin-top:0;
+  overflow:auto;
+}
+.labels{
+  height:19px;
+  line-height:19px;
+}
+.nav{
+  grid-template-columns:110px 1fr 110px;
+}
+.nav button{
+  width:110px;
+}
+.reporthead .kicker{
+  height:19px;
+  line-height:19px;
+  overflow:hidden;
+}
+#reportTitle{
+  height:95px;
+  overflow:hidden;
+}
+#reportSubtitle{
+  height:23px;
+  overflow:hidden;
+}
+.reportgrid{
+  grid-template-rows:430px 355px;
+}
+.reportgrid > .panel{
+  height:100%;
+}
+.trait{
+  grid-template-columns:230px 1fr 40px;
+  height:25px;
+  margin:12px 0;
+}
+#report > .actions{
+  display:grid;
+  grid-template-columns:110px 170px;
+  align-items:stretch;
+}
+#reportNote{
+  min-height:20px;
+}
+@media(max-width:800px){
+  .reportgrid{
+    grid-template-rows:500px 420px 430px 370px;
+  }
+  .trait{
+    grid-template-columns:150px 1fr 34px;
+    height:42px;
+    margin:8px 0;
+  }
+}
+@media(max-width:560px){
+  .hero h1{
+    height:147px;
+  }
+  html[lang="en"] .hero h1{
+    font-size:44px;
+    line-height:1.05;
+  }
+  #homeDesc{
+    height:135px;
+  }
+  html[lang="en"] #homeDesc{
+    font-size:18px;
+    line-height:1.55;
+  }
+  #home .actions{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  }
+  #home .actions button{
+    min-width:0;
+    padding-left:10px;
+    padding-right:10px;
+    font-size:14px;
+  }
+  #zh,
+  #en{
+    height:120px;
+  }
+  #reportTitle{
+    height:104px;
+  }
+  #reportSubtitle{
+    height:57px;
+  }
+  #reportNote{
+    height:39px;
+    overflow:hidden;
+  }
+  #report > .actions{
+    grid-template-columns:110px 170px;
+  }
+}
+@media(max-width:400px){
+  .top{
+    height:112px;
+  }
+}
+
 </style></head><body><div class="shell"><div class="top"><div class="brand">qPersonality <span>Preview</span></div><div class="language-switcher"><div class="language-label" id="languageLabel">語言 / Language</div><div class="language-segmented" role="radiogroup" aria-labelledby="languageLabel"><button class="language-option is-active" type="button" id="langZh" role="radio" aria-checked="true"><span>繁中</span></button><button class="language-option" type="button" id="langEn" role="radio" aria-checked="false"><span>English</span></button></div></div></div>
 <section id="home" class="screen active"><div class="hero"><div class="kicker" id="homeKicker">人格特質分析系統</div><h1 id="homeTitle">探索構成你的深層人格模式。</h1><p id="homeDesc">不是把你塞進一個人格盒子，而是建立一張真正屬於你的多維人格地圖。</p><div class="actions"><button class="primary" type="button" id="startBtn"><span>開始預覽測驗</span></button><button class="pill" type="button" id="reportBtn"><span>直接看結果報告</span></button></div></div><div class="modes"><button class="mode sel" type="button" data-test-size="24"><strong>24</strong><h3>Snapshot</h3><p id="mode24Desc">3–4 分鐘<br>快速人格掃描</p></button><button class="mode" type="button" data-test-size="60"><strong>60</strong><h3>Core</h3><p id="mode60Desc">8–10 分鐘<br>六大人格＋核心面向</p></button><button class="mode" type="button" data-test-size="120"><strong>120</strong><h3>Deep</h3><p id="mode120Desc">15–20 分鐘<br>深度人格與矛盾分析</p></button><button class="mode" type="button" data-test-size="180"><strong>180</strong><h3>Complete</h3><p id="mode180Desc">25–30 分鐘<br>完整人格地圖</p></button></div></section>
 <section id="assessment" class="screen"><div class="assess"><div class="progrow"><span id="num"></span><span id="pct"></span></div><div class="prog"><i id="bar"></i></div><div class="card"><div class="meta"><span id="qid"></span> · <span id="facet"></span></div><div id="zh" class="q"></div><div id="en" class="en"></div><div class="labels"><span id="scaleLeft">非常不像我</span><span id="scaleRight">非常像我</span></div><div id="scale" class="scale"></div><div class="nav"><button class="pill" type="button" id="prevBtn"><span>上一題</span></button><span class="small">1 — 7</span><button class="primary" type="button" id="nextBtn"><span>下一題</span></button></div></div></div></section>
